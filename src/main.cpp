@@ -5,7 +5,7 @@
 #include <cstring>
 #include <chrono>
 #include <iomanip>
-#include <omp.h> // Added for thread control
+#include <omp.h> 
 
 #include "Point.hpp"
 #include "load_points.hpp"
@@ -32,8 +32,6 @@ int main(int argc, char** argv) {
     int D = 0;
 
     // --- 1. Measure Data Loading (Parallel) ---
-    // This is now measured because with mmap and 128 cores,
-    // it's a major part of your performance profile.
     auto t_load_start = std::chrono::high_resolution_clock::now();
     if (!load_points(path, pts, D)) {
         std::cerr << "Could not load dataset\n";
